@@ -1,0 +1,59 @@
+<view class="page" wx:if="{{course}}">
+  <!-- 课程图片 -->
+  <view class="course-image">
+    <image src="{{course.image_url}}" mode="aspectFill" class="course-image-img" />
+    <view class="sport-type-badge">{{course.sport_type}}</view>
+    <view class="slot-status-badge" style="background-color: {{course.slotStatusBgColor}}">
+      <text style="color: {{course.slotStatusColor}}">{{course.slotStatusText}}</text>
+    </view>
+  </view>
+
+  <!-- 课程基本信息 -->
+  <view class="course-info-card">
+    <view class="course-name">{{course.name}}</view>
+    <view class="course-price">{{course.price}}</view>
+
+    <view class="detail-row">
+      <text class="detail-icon">🕐</text>
+      <text class="detail-text">{{course.startTimeFormatted}} - {{course.endTimeFormatted}}</text>
+    </view>
+
+    <view class="detail-row">
+      <text class="detail-icon">📍</text>
+      <text class="detail-text">{{course.location}}</text>
+    </view>
+
+    <view class="detail-row">
+      <text class="detail-icon">👨‍🏫</text>
+      <text class="detail-text">{{course.teacher}}</text>
+    </view>
+
+    <view class="detail-row">
+      <text class="detail-icon">👥</text>
+      <text class="detail-text">已预约 {{course.booked_slots}}/{{course.total_slots}} 人</text>
+    </view>
+  </view>
+
+  <!-- 课程介绍 -->
+  <view class="course-detail-card">
+    <view class="card-title">课程介绍</view>
+    <view class="card-content">{{course.description}}</view>
+  </view>
+
+  <!-- 课程要求 -->
+  <view class="course-detail-card" wx:if="{{course.requirements}}">
+    <view class="card-title">课程要求</view>
+    <view class="card-content">{{course.requirements}}</view>
+  </view>
+
+  <!-- 底部操作栏 -->
+  <view class="bottom-bar">
+    <view class="book-btn" bindtap="handleBooking">
+      <text>立即预约</text>
+    </view>
+  </view>
+</view>
+
+<view class="loading" wx:if="{{!course}}">
+  <text>加载中...</text>
+</view>

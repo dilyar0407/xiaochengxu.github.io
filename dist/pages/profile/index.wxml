@@ -1,0 +1,50 @@
+<view class="page">
+  <!-- 用户信息卡片 -->
+  <view class="user-card">
+    <image
+      class="user-avatar"
+      src="{{user.avatar}}"
+      mode="aspectFill"
+      wx:if="{{user.avatar}}"
+      binderror="onAvatarError" />
+    <view class="user-avatar" wx:else>
+      <text class="avatar-text">{{user.name ? user.name.substring(0, 1) : '用'}}</text>
+    </view>
+    <view class="user-info">
+      <view class="user-name">{{user.name || '未登录'}}</view>
+      <view class="user-email">微信用户</view>
+    </view>
+  </view>
+
+  <!-- 功能菜单 -->
+  <view class="menu-list">
+    <view class="menu-item" bindtap="goToMyBookings">
+      <view class="menu-item-left">
+        <text class="menu-icon">📅</text>
+        <text class="menu-text">我的预约</text>
+      </view>
+      <view class="menu-arrow">›</view>
+    </view>
+
+    <view class="menu-item">
+      <view class="menu-item-left">
+        <text class="menu-icon">⚙️</text>
+        <text class="menu-text">设置</text>
+      </view>
+      <view class="menu-arrow">›</view>
+    </view>
+
+    <view class="menu-item">
+      <view class="menu-item-left">
+        <text class="menu-icon">❓</text>
+        <text class="menu-text">帮助与反馈</text>
+      </view>
+      <view class="menu-arrow">›</view>
+    </view>
+  </view>
+
+  <!-- 退出登录按钮 -->
+  <view class="logout-btn" bindtap="handleLogout">
+    <text>退出登录</text>
+  </view>
+</view>

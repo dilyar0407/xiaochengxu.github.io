@@ -1,0 +1,65 @@
+<view class="page">
+  <!-- 顶部筛选栏 -->
+  <view class="filter-bar">
+    <view class="filter-header">
+      <text class="filter-title">运动类型</text>
+    </view>
+    <scroll-view scroll-x class="filter-scroll">
+      <view class="filter-list">
+        <view
+          wx:for="{{sportTypes}}"
+          wx:key="*this"
+          class="filter-item {{selectedType === item ? 'active' : ''}}"
+          bindtap="handleFilterChange"
+          data-type="{{item}}">
+          <text>{{item}}</text>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+
+  <!-- 课程列表 -->
+  <scroll-view scroll-y class="course-list">
+    <view class="course-item" wx:for="{{courses}}" wx:key="id" bindtap="goToDetail" data-id="{{item.id}}">
+      <!-- 课程图片 -->
+      <view class="course-image">
+        <image src="{{item.image_url}}" mode="aspectFill" class="course-image-img" />
+        <view class="sport-type-badge">{{item.sport_type}}</view>
+        <view class="slot-status-badge" style="background-color: {{item.slotStatusBgColor}}">
+          <text style="color: {{item.slotStatusColor}}">{{item.slotStatusText}}</text>
+        </view>
+      </view>
+
+      <!-- 课程信息 -->
+      <view class="course-info">
+        <view class="course-name">{{item.name}}</view>
+
+        <view class="course-detail">
+          <view class="detail-row">
+            <text class="detail-icon">🕐</text>
+            <text class="detail-text">{{item.startTimeFormatted}} - {{item.endTimeFormatted}}</text>
+          </view>
+
+          <view class="detail-row">
+            <text class="detail-icon">📍</text>
+            <text class="detail-text">{{item.location}}</text>
+          </view>
+
+          <view class="detail-row">
+            <text class="detail-icon">👨‍🏫</text>
+            <text class="detail-text">{{item.teacher}}</text>
+          </view>
+        </view>
+
+        <view class="course-footer">
+          <view class="booked-count">
+            <text>👥 {{item.booked_slots}}/{{item.total_slots}}人</text>
+          </view>
+          <view class="detail-btn" catchtap="handleDetailClick" data-id="{{item.id}}">
+            <text>查看详情</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+</view>

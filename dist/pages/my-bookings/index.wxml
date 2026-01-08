@@ -1,0 +1,43 @@
+<view class="page">
+  <scroll-view scroll-y class="booking-list">
+    <view
+      class="booking-item"
+      wx:for="{{bookings}}"
+      wx:key="id">
+      <view class="booking-header">
+        <view class="course-name">{{item.course.name}}</view>
+        <view class="booking-status confirmed">已预约</view>
+      </view>
+
+      <view class="booking-body">
+        <view class="detail-row">
+          <text class="detail-icon">🕐</text>
+          <text class="detail-text">{{item.course.startTimeFormatted || item.course.start_time}}</text>
+        </view>
+
+        <view class="detail-row">
+          <text class="detail-icon">📍</text>
+          <text class="detail-text">{{item.course.location}}</text>
+        </view>
+
+        <view class="detail-row">
+          <text class="detail-icon">👨‍🏫</text>
+          <text class="detail-text">{{item.course.teacher}}</text>
+        </view>
+      </view>
+
+      <view class="booking-footer">
+        <view class="cancel-btn" bindtap="cancelBooking" data-id="{{item.id}}">
+          <text>取消预约</text>
+        </view>
+        <view class="detail-btn" bindtap="goToCourseDetail" data-id="{{item.course.id}}">
+          <text>查看详情</text>
+        </view>
+      </view>
+    </view>
+
+    <view class="empty-state" wx:if="{{bookings.length === 0}}">
+      <text class="empty-text">暂无预约</text>
+    </view>
+  </scroll-view>
+</view>

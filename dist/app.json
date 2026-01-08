@@ -1,0 +1,42 @@
+{
+  "pages": [
+    "pages/login/index",
+    "pages/courses/index",
+    "pages/my-bookings/index",
+    "pages/profile/index",
+    "pages/course-detail/index"
+  ],
+  "tabBar": {
+    "color": "#8B8B8B",
+    "selectedColor": "#FF6B35",
+    "backgroundColor": "#FFFFFF",
+    "borderStyle": "white",
+    "list": [
+      {
+        "pagePath": "pages/courses/index",
+        "text": "课程",
+        "iconPath": "pages/assets/images/unselected/courses.png",
+        "selectedIconPath": "pages/assets/images/selected/courses.png"
+      },
+      {
+        "pagePath": "pages/my-bookings/index",
+        "text": "我的预约",
+        "iconPath": "pages/assets/images/unselected/bookings.png",
+        "selectedIconPath": "pages/assets/images/selected/bookings.png"
+      },
+      {
+        "pagePath": "pages/profile/index",
+        "text": "我的",
+        "iconPath": "pages/assets/images/unselected/profile.png",
+        "selectedIconPath": "pages/assets/images/selected/profile.png"
+      }
+    ]
+  },
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#FFFFFF",
+    "navigationBarTitleText": "体育课预约",
+    "navigationBarTextStyle": "black"
+  },
+  "sitemapLocation": "sitemap.json"
+}
